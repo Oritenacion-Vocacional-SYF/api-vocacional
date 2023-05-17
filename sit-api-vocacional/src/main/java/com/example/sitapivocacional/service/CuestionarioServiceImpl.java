@@ -5,6 +5,8 @@ import com.example.sitapivocacional.repository.CuestionarioRepository;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CuestionarioServiceImpl implements CuestionarioService{
 
@@ -20,5 +22,10 @@ public class CuestionarioServiceImpl implements CuestionarioService{
     @Override
     public Cuestionario createCuestionario(Cuestionario cuestionario) {
         return cuestionarioRepository.save(cuestionario);
+    }
+
+    @Override
+    public List<Cuestionario> getAllCuestionarios() {
+        return cuestionarioRepository.findAll();
     }
 }

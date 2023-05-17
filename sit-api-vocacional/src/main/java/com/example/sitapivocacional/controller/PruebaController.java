@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/SYF/pruebas")
 public class PruebaController {
@@ -22,5 +24,10 @@ public class PruebaController {
     @PostMapping
     public ResponseEntity<Prueba> registrarPrueba(@RequestParam String id, @RequestBody String listaPreguntas){
         return new ResponseEntity<>(pruebaService.createPrueba(new Prueba(id, listaPreguntas)), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Prueba>> obtenerPruebas(){
+        return ResponseEntity.ok(pruebaService.getAllPruebas());
     }
 }
