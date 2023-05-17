@@ -2,7 +2,8 @@ package com.example.sitapivocacional.service;
 
 import com.example.sitapivocacional.model.Profesion;
 import com.example.sitapivocacional.repository.ProfesionRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.*;
+import java.util.List;
 
 @Service
 public class ProfesionServiceImpl implements ProfesionService{
@@ -16,4 +17,9 @@ public class ProfesionServiceImpl implements ProfesionService{
     public Profesion createProfesion(Profesion profesion){
         return profesionRepository.save(profesion);
     }
+    @Override
+    public List<Profesion> getAllProfesiones() {
+        return profesionRepository.findAll();
+    }
+
 }
