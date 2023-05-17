@@ -12,4 +12,6 @@ public interface CuestionarioService {
     boolean existsCuestionario(String id);
 
     Cuestionario getCuestionarioById(String id);
+
+    Cuestionario updateCuestionario(String id, String listaPreguntas);
 }

@@ -37,4 +37,13 @@ public class PruebaServiceImpl implements PruebaService{
     public Prueba getPruebaById(String id) {
         return pruebaRepository.findById(id).get();
     }
+
+    @Override
+    public Prueba updatePrueba(String id, String listaPreguntas) {
+        Prueba prue= getPruebaById(id);
+
+        prue.setPreguntas(listaPreguntas);
+
+        return pruebaRepository.save(prue);
+    }
 }

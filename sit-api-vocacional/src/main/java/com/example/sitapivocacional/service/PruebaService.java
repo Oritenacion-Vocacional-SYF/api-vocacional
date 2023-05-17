@@ -12,4 +12,6 @@ public interface PruebaService {
     boolean existsPrueba(String id);
 
     Prueba getPruebaById(String id);
+
+    Prueba updatePrueba(String id, String listaPreguntas);
 }

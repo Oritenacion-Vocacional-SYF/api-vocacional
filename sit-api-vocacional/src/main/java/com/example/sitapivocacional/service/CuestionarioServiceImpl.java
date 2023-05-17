@@ -38,4 +38,13 @@ public class CuestionarioServiceImpl implements CuestionarioService{
     public Cuestionario getCuestionarioById(String id) {
         return cuestionarioRepository.findById(id).get();
     }
+
+    @Override
+    public Cuestionario updateCuestionario(String id, String listaPreguntas) {
+        Cuestionario cuest= getCuestionarioById(id);
+
+        cuest.setPreguntas(listaPreguntas);
+
+        return cuestionarioRepository.save(cuest);
+    }
 }

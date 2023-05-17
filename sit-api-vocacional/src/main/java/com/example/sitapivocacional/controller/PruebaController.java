@@ -39,4 +39,13 @@ public class PruebaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la prueba.");
         }
     }
+
+    @PatchMapping("/{id}/modificar")
+    public ResponseEntity<?> modificarPrueba(@PathVariable String id, @RequestBody String listaPreguntas){
+        if(pruebaService.existsPrueba(id))
+            return ResponseEntity.ok(pruebaService.updatePrueba(id, listaPreguntas));
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la prueba.");
+        }
+    }
 }
