@@ -5,6 +5,8 @@ import com.example.sitapivocacional.repository.PruebaRepository;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PruebaServiceImpl implements PruebaService{
     private final PruebaRepository pruebaRepository;
@@ -19,5 +21,20 @@ public class PruebaServiceImpl implements PruebaService{
     @Override
     public Prueba createPrueba(Prueba prueba) {
         return pruebaRepository.save(prueba);
+    }
+
+    @Override
+    public List<Prueba> getAllPruebas() {
+        return pruebaRepository.findAll();
+    }
+
+    @Override
+    public boolean existsPrueba(String id) {
+        return pruebaRepository.existsById(id);
+    }
+
+    @Override
+    public Prueba getPruebaById(String id) {
+        return pruebaRepository.findById(id).get();
     }
 }

@@ -6,4 +6,10 @@ import java.util.List;
 
 public interface CuestionarioService {
     Cuestionario createCuestionario(Cuestionario cuestionario);
+
+    List<Cuestionario> getAllCuestionarios();
+
+    boolean existsCuestionario(String id);
+
+    Cuestionario getCuestionarioById(String id);
 }
