@@ -41,4 +41,13 @@ public class CuestionarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el cuestionario.");
         }
     }
+
+    @PatchMapping("/{id}/modificar")
+    public ResponseEntity<?> modificarCuestionario(@PathVariable String id, @RequestBody String listaPreguntas){
+        if(cuestionarioService.existsCuestionario(id))
+            return ResponseEntity.ok(cuestionarioService.updateCuestionario(id, listaPreguntas));
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el cuestionario.");
+        }
+    }
 }
