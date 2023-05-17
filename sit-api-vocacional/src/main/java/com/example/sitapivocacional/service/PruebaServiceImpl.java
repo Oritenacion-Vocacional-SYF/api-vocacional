@@ -27,4 +27,14 @@ public class PruebaServiceImpl implements PruebaService{
     public List<Prueba> getAllPruebas() {
         return pruebaRepository.findAll();
     }
+
+    @Override
+    public boolean existsPrueba(String id) {
+        return pruebaRepository.existsById(id);
+    }
+
+    @Override
+    public Prueba getPruebaById(String id) {
+        return pruebaRepository.findById(id).get();
+    }
 }

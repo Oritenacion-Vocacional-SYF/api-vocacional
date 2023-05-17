@@ -28,4 +28,14 @@ public class CuestionarioServiceImpl implements CuestionarioService{
     public List<Cuestionario> getAllCuestionarios() {
         return cuestionarioRepository.findAll();
     }
+
+    @Override
+    public boolean existsCuestionario(String id) {
+        return cuestionarioRepository.existsById(id);
+    }
+
+    @Override
+    public Cuestionario getCuestionarioById(String id) {
+        return cuestionarioRepository.findById(id).get();
+    }
 }

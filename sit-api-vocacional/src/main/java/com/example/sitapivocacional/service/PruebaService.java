@@ -8,4 +8,8 @@ public interface PruebaService {
     Prueba createPrueba(Prueba prueba);
 
     List<Prueba> getAllPruebas();
+
+    boolean existsPrueba(String id);
+
+    Prueba getPruebaById(String id);
 }

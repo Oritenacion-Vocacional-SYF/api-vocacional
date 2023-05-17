@@ -30,4 +30,13 @@ public class PruebaController {
     public ResponseEntity<List<Prueba>> obtenerPruebas(){
         return ResponseEntity.ok(pruebaService.getAllPruebas());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerUnaPrueba(@PathVariable String id){
+        if(pruebaService.existsPrueba(id))
+            return ResponseEntity.ok(pruebaService.getPruebaById(id));
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la prueba.");
+        }
+    }
 }

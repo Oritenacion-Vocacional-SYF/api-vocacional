@@ -32,4 +32,13 @@ public class CuestionarioController {
     public ResponseEntity<List<Cuestionario>> obtenerCuestionarios(){
         return ResponseEntity.ok(cuestionarioService.getAllCuestionarios());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerUnCuestionario(@PathVariable String id){
+        if(cuestionarioService.existsCuestionario(id))
+            return ResponseEntity.ok(cuestionarioService.getCuestionarioById(id));
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el cuestionario.");
+        }
+    }
 }
