@@ -46,4 +46,9 @@ public class PruebaServiceImpl implements PruebaService{
 
         return pruebaRepository.save(prue);
     }
+
+    @Override
+    public void deletePrueba(String id) {
+        pruebaRepository.deleteById(id);
+    }
 }

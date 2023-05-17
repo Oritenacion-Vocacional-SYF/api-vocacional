@@ -48,4 +48,15 @@ public class PruebaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la prueba.");
         }
     }
+
+    @DeleteMapping("/{id}/borrar")
+    public ResponseEntity<?> borrarUnaPrueba(@PathVariable String id){
+        if(pruebaService.existsPrueba(id)){
+            pruebaService.deletePrueba(id);
+            return ResponseEntity.ok("Prueba eliminada correctamente.");
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la prueba.");
+        }
+    }
 }

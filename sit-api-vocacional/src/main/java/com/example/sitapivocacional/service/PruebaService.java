@@ -14,4 +14,6 @@ public interface PruebaService {
     Prueba getPruebaById(String id);
 
     Prueba updatePrueba(String id, String listaPreguntas);
+
+    void deletePrueba(String id);
 }

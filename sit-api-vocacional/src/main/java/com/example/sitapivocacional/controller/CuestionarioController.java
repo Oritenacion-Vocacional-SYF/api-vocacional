@@ -50,4 +50,15 @@ public class CuestionarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el cuestionario.");
         }
     }
+
+    @DeleteMapping("/{id}/borrar")
+    public ResponseEntity<?> borrarUnCuestionario(@PathVariable String id){
+        if(cuestionarioService.existsCuestionario(id)){
+            cuestionarioService.deleteCuestionario(id);
+            return ResponseEntity.ok("Cuestionario eliminado correctamente.");
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el cuestionario.");
+        }
+    }
 }
