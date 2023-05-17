@@ -14,4 +14,6 @@ public interface CuestionarioService {
     Cuestionario getCuestionarioById(String id);
 
     Cuestionario updateCuestionario(String id, String listaPreguntas);
+
+    void deleteCuestionario(String id);
 }

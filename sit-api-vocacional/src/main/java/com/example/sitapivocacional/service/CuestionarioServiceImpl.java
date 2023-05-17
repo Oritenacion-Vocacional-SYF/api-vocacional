@@ -47,4 +47,9 @@ public class CuestionarioServiceImpl implements CuestionarioService{
 
         return cuestionarioRepository.save(cuest);
     }
+
+    @Override
+    public void deleteCuestionario(String id) {
+        cuestionarioRepository.deleteById(id);
+    }
 }
