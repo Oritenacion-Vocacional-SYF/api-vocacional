@@ -11,4 +11,5 @@ public interface ProfesionService {
     boolean existsProfesion(String id);
     Profesion getProfesionById(String id);
     Profesion updateProfesion(String id, String atributo, String valor);
+    void deleteProfesion(String id);
 }

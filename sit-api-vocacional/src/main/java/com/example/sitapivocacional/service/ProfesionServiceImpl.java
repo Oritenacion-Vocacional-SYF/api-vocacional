@@ -56,4 +56,9 @@ public class ProfesionServiceImpl implements ProfesionService{
         return profesionRepository.save(prof);
     }
 
+    @Override
+    public void deleteProfesion(String id) {
+        profesionRepository.deleteById(id);
+    }
+
 }
