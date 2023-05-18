@@ -101,4 +101,19 @@ public class UsuarioServiceImpl implements UsuarioService{
         usuarioRepository.deleteById(id);
     }
 
+    @Override
+    public List<Usuario> getAllUsuarios() {
+        return usuarioRepository.findAll();
+    }
+
+    @Override
+    public List<Usuario> getAllAdmins() {
+        return getAllUsuarios().stream().filter(ad -> ad.getTipo().equals("admin")).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Usuario> getAllEstudiantes() {
+        return getAllUsuarios().stream().filter(est -> est.getTipo().equals("estudiante")).collect(Collectors.toList());
+    }
+
 }

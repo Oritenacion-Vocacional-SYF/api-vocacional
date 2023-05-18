@@ -19,4 +19,11 @@ public interface UsuarioService {
 
     void deleteUsuario(int id);
 
+    List<Usuario> getAllUsuarios();
+
+    List<Usuario> getAllAdmins();
+
+    List<Usuario> getAllEstudiantes();
+
+
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -55,6 +56,21 @@ public class UsuarioController {
         else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el usuario.");
         }
+    }
+
+    @GetMapping("/admins")
+    public ResponseEntity<List<Usuario>> obtenerAdmins(){
+        return ResponseEntity.ok(usuarioService.getAllAdmins());
+    }
+
+    @GetMapping("/estudiantes")
+    public ResponseEntity<List<Usuario>> obtenerEstudiantes(){
+        return ResponseEntity.ok(usuarioService.getAllEstudiantes());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Usuario>> obtenerUsuarios(){
+        return ResponseEntity.ok(usuarioService.getAllUsuarios());
     }
 
 
