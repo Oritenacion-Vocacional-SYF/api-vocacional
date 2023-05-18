@@ -96,4 +96,9 @@ public class UsuarioServiceImpl implements UsuarioService{
         return usuarioRepository.findById(id).get();
     }
 
+    @Override
+    public void deleteUsuario(int id) {
+        usuarioRepository.deleteById(id);
+    }
+
 }

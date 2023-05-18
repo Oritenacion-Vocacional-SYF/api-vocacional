@@ -46,11 +46,16 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el estudiante.");
     }
 
-
-
-
-
-
+    @DeleteMapping("/{id}/borrar")
+    public ResponseEntity<?> borrarUsuario(@PathVariable int id){
+        if(usuarioService.existsUsuario(id)){
+            usuarioService.deleteUsuario(id);
+            return ResponseEntity.ok("Usuario eliminado correctamente.");
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el usuario.");
+        }
+    }
 
 
 

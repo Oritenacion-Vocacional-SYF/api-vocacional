@@ -17,4 +17,6 @@ public interface UsuarioService {
 
     Usuario getUsuarioById(int id);
 
+    void deleteUsuario(int id);
+
 }
