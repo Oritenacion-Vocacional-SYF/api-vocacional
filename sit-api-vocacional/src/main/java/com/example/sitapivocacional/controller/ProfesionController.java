@@ -34,4 +34,12 @@ public class ProfesionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la profesión.");
         }
     }
+    @PatchMapping("/{id}/actualizar-datos")
+    public ResponseEntity<?> modificarProfesion(@PathVariable String id, @RequestParam String atributo, @RequestParam String valor){
+        if(profesionService.existsProfesion(id))
+            return ResponseEntity.ok(profesionService.updateProfesion(id, atributo, valor));
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la profesión.");
+        }
+    }
 }
