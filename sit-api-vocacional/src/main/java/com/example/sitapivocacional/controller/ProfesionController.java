@@ -26,4 +26,12 @@ public class ProfesionController {
     public ResponseEntity<List<Profesion>> obtenerProfesiones(){
         return ResponseEntity.ok(profesionService.getAllProfesiones());
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerUnaProfesion(@PathVariable String id){
+        if(profesionService.existsProfesion(id))
+            return ResponseEntity.ok(profesionService.getProfesionById(id));
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la profesión.");
+        }
+    }
 }

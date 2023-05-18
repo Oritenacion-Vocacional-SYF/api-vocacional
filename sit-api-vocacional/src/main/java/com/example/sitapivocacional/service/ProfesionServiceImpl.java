@@ -22,4 +22,14 @@ public class ProfesionServiceImpl implements ProfesionService{
         return profesionRepository.findAll();
     }
 
+    @Override
+    public boolean existsProfesion(String id) {
+        return profesionRepository.existsById(id);
+    }
+
+    @Override
+    public Profesion getProfesionById(String id) {
+        return profesionRepository.findById(id).get();
+    }
+
 }

@@ -8,6 +8,8 @@ public interface ProfesionService {
 
     Profesion createProfesion(Profesion profesion);
     List<Profesion> getAllProfesiones();
+    boolean existsProfesion(String id);
 
+    Profesion getProfesionById(String id);
 
 }
