@@ -32,4 +32,28 @@ public class ProfesionServiceImpl implements ProfesionService{
         return profesionRepository.findById(id).get();
     }
 
+    @Override
+    public Profesion updateProfesion(String id, String atributo, String valor) {
+        Profesion prof= getProfesionById(id);
+
+        switch (atributo.toLowerCase()){
+            case "nombre": prof.setNombre(valor);
+                break;
+
+            case "descripcion": prof.setDescripcion(valor);
+                break;
+
+            case "requisitosadmision": prof.setRequisitosAdmision(valor);
+                break;
+
+            case "perspectivalaboral": prof.setPerspectivaLaboral(valor);
+                break;
+
+            case "salarios": prof.setSalarios(valor);
+                break;
+        }
+
+        return profesionRepository.save(prof);
+    }
+
 }
