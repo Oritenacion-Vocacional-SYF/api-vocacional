@@ -30,9 +30,32 @@ public class UsuarioController {
         return new ResponseEntity<>(usuarioService.createUsuario(new Estudiante(nom, ape, pswd, edad, correo, img, desc, gson.toJson(new ArrayList<CuestionarioTerminado>()), gson.toJson(new ArrayList<PruebaTerminada>()), gson.toJson(new ArrayList<String>()), gson.toJson(new ArrayList<String>()), gson.toJson(new ArrayList<String>()))), HttpStatus.CREATED);
     }
 
+    @PatchMapping("/admins/{id}/modificar")
+    public ResponseEntity<?> modificarAdmin(@PathVariable int id, @RequestParam String atributo, @RequestParam String valor){
+        if(usuarioService.existsUsuario(id))
+            if(usuarioService.getUsuarioById(id).getTipo().equals("admin"))
+                return ResponseEntity.ok(usuarioService.updateAdmin(id, atributo, valor));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el admin.");
+    }
 
+    @PatchMapping("/estudiantes/{id}/modificar")
+    public ResponseEntity<?> modificarEstudiante(@PathVariable int id, @RequestParam String atributo, @RequestBody String valor){
+        if(usuarioService.existsUsuario(id))
+            if(usuarioService.getUsuarioById(id).getTipo().equals("estudiante"))
+                return ResponseEntity.ok(usuarioService.updateEstudiante(id, atributo, valor));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el estudiante.");
+    }
 
-
+    @DeleteMapping("/{id}/borrar")
+    public ResponseEntity<?> borrarUsuario(@PathVariable int id){
+        if(usuarioService.existsUsuario(id)){
+            usuarioService.deleteUsuario(id);
+            return ResponseEntity.ok("Usuario eliminado correctamente.");
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el usuario.");
+        }
+    }
 
 
 
