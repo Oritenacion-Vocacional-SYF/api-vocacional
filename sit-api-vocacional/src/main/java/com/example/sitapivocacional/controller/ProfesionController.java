@@ -42,4 +42,14 @@ public class ProfesionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la profesión.");
         }
     }
+    @DeleteMapping("/{id}/borrar")
+    public ResponseEntity<?> borrarUnaProfesion(@PathVariable String id){
+        if(profesionService.existsProfesion(id)){
+            profesionService.deleteProfesion(id);
+            return ResponseEntity.ok("Profesión eliminada correctamente.");
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la profesión.");
+        }
+    }
 }
