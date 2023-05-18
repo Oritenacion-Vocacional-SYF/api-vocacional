@@ -8,4 +8,13 @@ public interface UsuarioService {
 
     Usuario createUsuario(Usuario usuario);
 
+    Usuario updateAdmin(int id, String atributo, String valor);
+
+    Usuario updateEstudiante(int id, String atributo, String valor);
+
+
+    boolean existsUsuario(int id);
+
+    Usuario getUsuarioById(int id);
+
 }
