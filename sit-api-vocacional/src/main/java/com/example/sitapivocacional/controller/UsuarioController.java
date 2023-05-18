@@ -73,6 +73,41 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.getAllUsuarios());
     }
 
+    @GetMapping("/admins/{cod_admin}")
+    public ResponseEntity<?> obtenerUnAdmin(@PathVariable String cod_admin){
+        for (Usuario user: usuarioService.getAllUsuarios()){
+            if(user.getTipo().equals("admin")){
+                Administrador admin= (Administrador) user;
+                if(admin.getCodigoAdmin().equals(cod_admin))
+                    return ResponseEntity.ok(admin);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el estudiante.");
+    }
+
+    @GetMapping("/estudiantes/{id}")
+    public ResponseEntity<?> obtenerUnEstudiante(@PathVariable int id){
+        if(usuarioService.existsUsuario(id)){
+            if(usuarioService.getUsuarioById(id).getTipo().equals("estudiante"))
+                return ResponseEntity.ok(usuarioService.getUsuarioById(id));
+            else{
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el estudiante.");
+            }
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el estudiante.");
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerUnUsuario(@PathVariable int id){
+        if(usuarioService.existsUsuario(id))
+            return ResponseEntity.ok(usuarioService.getUsuarioById(id));
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el usuario.");
+        }
+    }
+
 
 
 
